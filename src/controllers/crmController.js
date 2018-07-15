@@ -48,3 +48,12 @@ export const updateContact = (req, res) => {
   });
 };
 
+export const deleteContact = (req, res) => {
+  const contactId = req.params.contactId
+  Contact.remove({ _id: contactId }, (err) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ message: `Successfully deleted contact ${contactId}` });
+  })
+};
